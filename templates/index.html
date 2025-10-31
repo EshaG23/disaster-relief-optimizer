@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Disaster Relief Resource Allocator & Route Optimizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="/static/style.css" rel="stylesheet" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Disaster Relief Resource Allocator & Route Optimizer</h1>
+    <p>Bellman-Ford (Routes) · Fractional Knapsack (Supplies) · Greedy Coloring (Scheduling)</p>
+  </header>
+
+  <main>
+    <!-- Part 1: Bellman-Ford -->
+    <section class="card">
+      <h2>Part 1: Route Optimization (Bellman-Ford)</h2>
+      <div class="grid">
+        <div>
+          <label>Number of places</label>
+          <input id="bf-count" type="number" min="2" value="5" />
+          <button id="bf-build">Build Inputs</button>
+
+          <!-- NEW: Auto-fill distances from Indian place names -->
+          <div class="row">
+            <button id="bf-auto" class="secondary">Auto distances (India)</button>
+          </div>
+
+          <div id="bf-names"></div>
+          <div id="bf-matrix"></div>
+
+          <div class="row">
+            <div>
+              <label>Source (Main Stock)</label>
+              <select id="bf-source"></select>
+            </div>
+            <div>
+              <label>Destination (Disaster Area)</label>
+              <select id="bf-dest"></select>
+            </div>
+          </div>
+
+          <button id="bf-run" class="primary">Find Optimized Route</button>
+          <div id="bf-output" class="output"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Part 2: Knapsack -->
+    <section class="card">
+      <h2>Part 2: Resource Allocation (Fractional Knapsack)</h2>
+      <div class="grid">
+        <div>
+          <label>Total vehicle capacity (kg)</label>
+          <input id="cap-input" type="number" min="1" value="1000" />
+
+          <table id="items-table">
+            <thead>
+              <tr>
+                <th>Resource</th>
+                <th>Weight (kg)</th>
+                <th>Demand (value)</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="items-body"></tbody>
+          </table>
+
+          <div class="row">
+            <input type="text" id="item-name" placeholder="e.g., rice" />
+            <input type="number" id="item-weight" placeholder="weight" />
+            <input type="number" id="item-value" placeholder="demand/value" />
+            <button id="add-item">Add</button>
+          </div>
+
+          <button id="knap-run" class="primary">Compute Allocation</button>
+          <div id="knap-output" class="output"></div>
+        </div>
+
+        <div>
+          <canvas id="knap-pie"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Part 3: Coloring (SCHEDULING) -->
+    <section class="card">
+      <h2>Part 3: Scheduling (Greedy Graph Coloring)</h2>
+      <p>Assigns time-slots/teams (colors) so adjacent areas aren’t served simultaneously.</p>
+
+      <!-- Builder -->
+      <div class="row">
+        <label for="color-zone-count">Number of zones:</label>
+        <input id="color-zone-count" type="number" value="4" min="2" max="15" />
+        <button id="color-build" class="secondary">Build Zone Inputs</button>
+      </div>
+
+      <div id="color-names"></div>
+      <div id="color-matrix"></div>
+
+      <!-- NEW: Distance threshold + auto adjacency -->
+      <div class="row">
+        <label for="distance-threshold">Threshold (km):</label>
+        <input id="distance-threshold" type="number" value="20" min="1" max="2000" />
+        <button id="color-auto" class="secondary">Auto adjacency by distance (India)</button>
+      </div>
+
+      <div class="row">
+        <label for="color-limit">Number of available time slots (colors):</label>
+        <input id="color-limit" type="number" value="3" min="1" max="10" />
+      </div>
+
+      <button id="color-run" class="primary">Compute Coloring</button>
+      <div id="color-output" class="output"></div>
+      <canvas id="color-canvas"></canvas>
+    </section>
+  </main>
+
+  <footer>
+    <small>© Disaster Relief Optimizer — built with Flask, Chart.js, and vanilla JS.</small>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
