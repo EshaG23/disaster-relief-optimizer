@@ -1,0 +1,221 @@
+/* ------------------- Root Colors ------------------- */
+:root {
+  --bg-soft-gray: #f3f4f6;
+  --navy-blue: #1e3a8a;
+  --sky-blue: #3b82f6;
+  --muted-orange: #f59e0b;
+  --forest-green: #10b981;
+  --dark-gray: #111827;
+  --white: #ffffff;
+
+  --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  --radius: 12px;
+}
+
+/* ------------------- Global Layout ------------------- */
+body {
+  margin: 0;
+  font-family: "Inter", "Poppins", sans-serif;
+  background-color: var(--bg-soft-gray);
+  color: var(--dark-gray);
+  line-height: 1.5;
+}
+
+main {
+  padding: 2rem 4%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ------------------- Header ------------------- */
+header {
+  background-color: var(--navy-blue);
+  color: var(--white);
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  font-weight: 600;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+header p {
+  margin-top: 0.4rem;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+/* ------------------- Cards / Sections ------------------- */
+.card {
+  background-color: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  padding: 1.8rem;
+  margin-bottom: 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card h2 {
+  color: var(--navy-blue);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+/* ------------------- Buttons ------------------- */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  padding: 0.5rem 1rem;
+}
+
+button.primary {
+  background-color: var(--sky-blue);
+  color: var(--white);
+}
+
+button.primary:hover {
+  background-color: #2563eb;
+}
+
+button.secondary {
+  background-color: var(--muted-orange);
+  color: var(--white);
+}
+
+button.secondary:hover {
+  background-color: #d97706;
+}
+
+button.danger {
+  background-color: #dc2626;
+  color: var(--white);
+}
+
+button.danger:hover {
+  background-color: #b91c1c;
+}
+
+/* ------------------- Inputs ------------------- */
+input,
+select,
+textarea {
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 0.95rem;
+  width: 100%;
+  max-width: 240px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--sky-blue);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* ------------------- Grid Layouts ------------------- */
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+
+/* ------------------- Tables ------------------- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+th,
+td {
+  border: 1px solid #e5e7eb;
+  padding: 0.6rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+th {
+  background-color: #f9fafb;
+  font-weight: 600;
+}
+
+/* ------------------- Output Boxes ------------------- */
+.output {
+  background-color: #f9fafb;
+  border-left: 4px solid var(--sky-blue);
+  padding: 0.8rem 1rem;
+  margin-top: 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: var(--dark-gray);
+}
+
+/* Success and Warning Highlights */
+.output.success {
+  border-left-color: var(--forest-green);
+}
+
+.output.warning {
+  border-left-color: var(--muted-orange);
+}
+
+/* ------------------- Footer ------------------- */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--navy-blue);
+  color: var(--white);
+  font-size: 0.85rem;
+  border-radius: var(--radius) var(--radius) 0 0;
+  margin-top: 2rem;
+}
+
+/* ------------------- Canvas Areas ------------------- */
+canvas {
+  width: 100%;
+  height: 400px;
+  background: #f8fafc;
+  border-radius: var(--radius);
+  border: 1px solid #e5e7eb;
+  margin-top: 1rem;
+  box-shadow: var(--card-shadow);
+}
+
+/* ------------------- Responsive ------------------- */
+@media (max-width: 768px) {
+  main {
+    padding: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  table {
+    font-size: 0.85rem;
+  }
+}
